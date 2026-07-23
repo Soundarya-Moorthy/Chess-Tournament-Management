@@ -23,7 +23,6 @@ players.subscribe((value) => {
 
   if (editId !== null) {
 
-    // UPDATE EXISTING PLAYER
     players.update((current) =>
       current.map((player) =>
         player.id === editId
@@ -40,7 +39,6 @@ players.subscribe((value) => {
 
   } else {
 
-    // ADD NEW PLAYER
     players.update((current) => [
       ...current,
       {
@@ -81,28 +79,21 @@ players.subscribe((value) => {
 </script>
 
 <section class="card">
-
   <h2>Players</h2>
-
   <div class="form-container">
-
     <input
       bind:value={playerName}
       placeholder="Player Name">
-
     <input
       bind:value={playerRating}
       type="number"
       placeholder="Rating">
-
     <button class="add-btn" on:click={addPlayer}>
       {editId !== null ? "Update Player" : "Add Player"}
     </button>
-
   </div>
 
   <table>
-
     <thead>
       <tr>
         <th>ID</th>
@@ -111,23 +102,19 @@ players.subscribe((value) => {
         <th>Actions</th>
       </tr>
     </thead>
-
     <tbody>
-
       {#each playerList as player}
 
       <tr>
         <td>{player.id}</td>
         <td>{player.name}</td>
         <td>{player.rating}</td>
-
         <td>
           <button
             class="edit"
             on:click={() => editPlayer(player)}>
             Edit
           </button>
-
           <button
             class="delete"
             on:click={() => deletePlayer(player.id, player.name)}>
@@ -135,11 +122,7 @@ players.subscribe((value) => {
           </button>
         </td>
       </tr>
-
       {/each}
-
     </tbody>
-
   </table>
-
 </section>
