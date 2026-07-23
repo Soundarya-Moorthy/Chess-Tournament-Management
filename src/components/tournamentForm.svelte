@@ -5,7 +5,6 @@
 
   let playerList = [];
   let tournamentList = [];
-
   let tournamentName = "";
   let selectedPlayers = [];
   let editId = null;
@@ -103,9 +102,7 @@
 </script>
 
 <section class="card">
-
   <h2>Tournaments</h2>
-
   <div class="form-container">
   <input
     bind:value={tournamentName}
@@ -115,7 +112,6 @@
 
 <div class="player-selection">
   <h4>Select Players</h4>
-
   {#each playerList as player}
     <div class="player-item">
       <input
@@ -132,17 +128,13 @@
   {/each}
 </div>
 
-<button
-  class="add-btn"
-  onclick={addTournament}
->
+<button class="add-btn" onclick={addTournament}>
   {editId !== null
     ? "Update Tournament"
     : "Create Tournament"}
 </button>
 
   <table>
-
     <thead>
       <tr>
         <th>ID</th>
@@ -153,9 +145,7 @@
     </thead>
 
     <tbody>
-
       {#if tournamentList.length === 0}
-
       <tr>
         <td colspan="4">
           No tournaments found
@@ -167,27 +157,16 @@
       {#each tournamentList as tournament}
 
       <tr>
-
         <td>{tournament.id}</td>
-
         <td>{tournament.name}</td>
-
         <td>{tournament.players.join(", ")}</td>
-
         <td>
-
-          <button
-            class="edit"
-            onclick={() =>
-              editTournament(tournament)
-            }
-          >
-            Edit
+          <button class="edit" onclick={() => editTournament(tournament)}
+          > Edit
           </button>
 
           <button
-            class="delete"
-            onclick={() =>
+            class="delete" onclick={() =>
               deleteTournament(
                 tournament.id,
                 tournament.name
@@ -196,15 +175,9 @@
           >
             Delete
           </button>
-
         </td>
-
       </tr>
-
       {/each}
-
     </tbody>
-
   </table>
-
 </section>
