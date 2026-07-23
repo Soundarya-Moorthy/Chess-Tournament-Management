@@ -1,26 +1,76 @@
 <script>
-  let rankings = [
-    { rank: 1, player: "Magnus Carlsen" },
-    { rank: 2, player: "Hikaru Nakamura" },
-    { rank: 3, player: "Ding Liren" }
-  ];
+// @ts-nocheck
+
+import { matches } from "../lib/matchStore";
+
+let matchList = [];
+let rankings = [];
+
+matches.subscribe((value) => {
+  matchList = value;
+  calculateRankings();
+});
+
+function calculateRankings() {
+
+  const scores = {};
+
+  matchList.forEach((match) => {
+
+    if (match.winner) {
+
+      scores[match.winner] =
+        (scores[match.winner] || 0) + 1;
+
+    }
+
+  });
+
+  rankings = Object.entries(scores)
+    .map(([player, wins]) => ({
+      player,
+      wins
+    }))
+    .sort((a, b) => b.wins - a.wins)
+    .slice(0, 3);
+
+}
 </script>
 
 <section class="card">
 
   <h2>🏆 Final Rankings</h2>
 
-  <div class="ranking-grid">
+  <table>
 
-    {#each rankings as item}
+    <thead>
 
-    <div class="rank-card">
-      <h3>#{item.rank}</h3>
-      <p>{item.player}</p>
-    </div>
+      <tr>
+        <th>Rank</th>
+        <th>Player</th>
+        <th>Wins</th>
+      </tr>
 
-    {/each}
+    </thead>
 
-  </div>
+    <tbody>
+
+      {#each rankings as rank, index}
+
+      <tr>
+
+        <td>{index + 1}</td>
+
+        <td>{rank.player}</td>
+
+        <td>{rank.wins}</td>
+
+      </tr>
+
+      {/each}
+
+    </tbody>
+
+  </table>
 
 </section>

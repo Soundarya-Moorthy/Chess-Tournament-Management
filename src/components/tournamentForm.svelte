@@ -19,50 +19,60 @@
   });
 
   function addTournament() {
-    if (!tournamentName.trim()) {
-      alert("Enter tournament name");
-      return;
-    }
 
-    if (selectedPlayers.length === 0) {
-      alert("Select at least one player");
-      return;
-    }
-
-    if (editId !== null) {
-      tournaments.update((current) =>
-        current.map((tournament) =>
-          tournament.id === editId
-            ? {
-                ...tournament,
-                name: tournamentName,
-                players: [...selectedPlayers]
-              }
-            : tournament
-        )
-      );
-
-      editId = null;
-    } else {
-      tournaments.update((current) => [
-        ...current,
-        {
-          id: current.length + 1,
-          name: tournamentName,
-          players: [...selectedPlayers]
-        }
-      ]);
-    }
-
-    tournamentName = "";
-    selectedPlayers = [];
+  if (!tournamentName.trim()) {
+    alert("Enter tournament name");
+    return;
   }
+
+  if (selectedPlayers.length === 0) {
+    alert("Select at least one player");
+    return;
+  }
+
+  if (editId !== null) {
+
+    tournaments.update((current) =>
+      current.map((tournament) =>
+        tournament.id === editId
+          ? {
+              ...tournament,
+              name: tournamentName,
+              players: [...selectedPlayers]
+            }
+          : tournament
+      )
+    );
+
+    editId = null;
+
+  } else {
+
+    tournaments.update((current) => [
+      ...current,
+      {
+        id:
+      current.length > 0
+        ? Math.max(...current.map(t => t.id)) + 1
+        : 1,
+        name: tournamentName,
+        players: [...selectedPlayers]
+      }
+    ]);
+
+  }
+
+  tournamentName = "";
+  selectedPlayers = [];
+}
 
   function editTournament(tournament) {
-    tournamentName = tournament.name;
-    selectedPlayers = [...tournament.players];
-    editId = tournament.id;
-  }
+
+  tournamentName = tournament.name;
+  selectedPlayers = [...tournament.players];
+  editId = tournament.id;
+
+}
 
   function deleteTournament(id, name) {
     const confirmed = window.confirm(

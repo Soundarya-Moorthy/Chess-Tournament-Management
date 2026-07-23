@@ -209,6 +209,16 @@ td button {
   text-align: left;
   flex: none;
 }
+
+.winner-btn {
+  background: #2d2a64;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 5px;
+}
 /* Responsive */
 
 @media (max-width: 768px) {

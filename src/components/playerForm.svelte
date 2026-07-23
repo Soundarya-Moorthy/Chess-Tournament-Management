@@ -22,6 +22,8 @@ players.subscribe((value) => {
   }
 
   if (editId !== null) {
+
+    // UPDATE EXISTING PLAYER
     players.update((current) =>
       current.map((player) =>
         player.id === editId
@@ -35,15 +37,21 @@ players.subscribe((value) => {
     );
 
     editId = null;
+
   } else {
+
+    // ADD NEW PLAYER
     players.update((current) => [
       ...current,
       {
-        id: current.length + 1,
+        id: current.length > 0
+          ? Math.max(...current.map(p => p.id)) + 1
+          : 1,
         name: playerName,
         rating: Number(playerRating)
       }
     ]);
+
   }
 
   playerName = "";
