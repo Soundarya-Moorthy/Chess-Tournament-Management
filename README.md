@@ -1,43 +1,121 @@
-# Svelte + Vite
+# Chess Tournament Management System
 
-This template should help get you started developing with Svelte in Vite.
+A Chess Tournament Management System built using **Svelte + JavaScript** for managing chess players, tournaments, knockout matches, and rankings.
 
-## Recommended IDE Setup
+---
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## Features
 
-## Need an official Svelte framework?
+### Player Management
+- Add Player
+- Edit Player
+- Delete Player
+- Store player data using Local Storage
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+### Tournament Management
+- Create Tournament
+- Edit Tournament
+- Delete Tournament
+- Add existing players to tournaments
+- Store tournament data using Local Storage
 
-## Technical considerations
+### Match System
+- Generate knockout matches automatically
+- Randomly pair players
+- Automatically determine winners
+- Record match results
 
-**Why use this over SvelteKit?**
+### Rankings
+- Display tournament champions
+- Show final rankings (1st, 2nd, and 3rd place)
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+---
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+## Tech Stack
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+- Svelte
+- JavaScript
+- Vite
+- Local Storage
 
-**Why include `.vscode/extensions.json`?**
+---
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+## Installation
 
-**Why enable `checkJs` in the JS template?**
+Clone the repository
 
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+```bash
+git clone https://github.com/your-username/chess-tournament-management.git
 ```
+
+Go into the project
+
+```bash
+cd chess-tournament
+```
+
+Install dependencies
+
+```bash
+npm install
+```
+
+Run the project
+
+```bash
+npm run dev
+```
+
+Build for production
+
+```bash
+npm run build
+```
+
+Preview production build
+
+```bash
+npm run preview
+```
+
+---
+
+## Project Structure
+
+```
+src/
+│
+├── components/
+│   ├── playerForm.svelte
+│   ├── tournamentForm.svelte
+│   ├── matchTable.svelte
+│   └── rankingTable.svelte
+│
+├── lib/
+│   ├── playerStore.js
+│   ├── tournamentStore.js
+│   └── matchStore.js 
+│
+├── App.svelte
+└── app.css
+```
+
+---
+
+## Git Commit History
+
+The project follows the Angular Commit Message Convention.
+
+Example commits:
+
+- feat: create responsive chess tournament dashboard
+- feat: implement player and tournament management
+- feat: implement knockout match generation
+- feat: add tournament rankings
+- fix: update player management and tournament workflow
+
+---
+
+## Live Demo
+
+Add your deployed link here.
